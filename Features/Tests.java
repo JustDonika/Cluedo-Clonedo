@@ -20,13 +20,13 @@ public class Tests {
         for(Card c : GM.getCards()){
             cardCount++;
             if(c.getCardDesign().getIconWidth()==0){
-                fail();
+                assertEquals(0, 1); //originally fail(), but this caused errors with the submission system
             }
         }
         for(Card c : GM.getAnswer()){
             cardCount++;
             if(c.getCardDesign().getIconWidth()==0){
-                fail();
+                assertEquals(0, 1);
             }
         }
         if(cardCount!=14){fail();}
@@ -39,7 +39,7 @@ public class Tests {
         GM.connectTiles();
         GameView GV = GM.getGUI();
         if(GV.tileAt(GM, 20, 20)==null){
-            fail();
+            assertEquals(0, 1);
         }
     }
 
@@ -50,7 +50,7 @@ public class Tests {
         GM.connectTiles();
         GameView GV = GM.getGUI();
         if(GV.tileAt(GM, 499, 499)==null){
-            fail();
+            assertEquals(0, 1);
         }
     }
 
@@ -61,7 +61,7 @@ public class Tests {
         GM.connectTiles();
         GameView GV = GM.getGUI();
         if(GV.tileAt(GM, 20, 499)==null){
-            fail();
+            assertEquals(0, 1);
         }
     }
 
@@ -72,7 +72,7 @@ public class Tests {
         GM.connectTiles();
         GameView GV = GM.getGUI();
         if(GV.tileAt(GM, 499, 20)==null){
-            fail();
+            assertEquals(0, 1);
         }
     }
 
@@ -83,7 +83,7 @@ public class Tests {
         GM.connectTiles();
         GameView GV = GM.getGUI();
         if(GV.tileAt(GM, 500, 499)!=null){
-            fail();
+            assertEquals(0, 1);
         }
     }
 
