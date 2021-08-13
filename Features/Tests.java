@@ -29,7 +29,7 @@ public class Tests {
                 assertEquals(0, 1);
             }
         }
-        if(cardCount!=14){fail();}
+        if(cardCount!=14){assertEquals(0, 1);}
     }
 
     @Test

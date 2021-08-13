@@ -29,6 +29,8 @@ public class GameView extends JFrame implements WindowListener, ActionListener{
     //For character select
     JFrame f=new JFrame("Choose a character:");
     final String[] s = {""};
+    JTextArea ta = new JTextArea();
+    final String[] stopThread = {""};
 
     JPanel outerPanel;
     JTextArea textArea = new JTextArea();
@@ -156,12 +158,37 @@ public class GameView extends JFrame implements WindowListener, ActionListener{
             f.add(radio);
             index++;
         }
-        f.setSize(300,300);
+        ta.setBounds(75, 10, 100, 20);
+        f.add(ta);
+        System.out.println(ta.getText());
+        if(ta.getText().equals("Bert") || ta.getText().equals("Percy") || ta.getText().equals("Lucilla") || ta.getText().equals("Malina")){
+            String toReturn=ta.getText();
+            ta.setText("");
+            f.setBounds(0,0,0,0);
+            f.setVisible(false);
+            return toReturn;
+        }
+
+        JButton but = new JButton( (new AbstractAction("Confirm") {
+                public void actionPerformed(ActionEvent e) {
+                    stopThread[0] ="yes";
+                }
+            }));
+
+        but.setBounds(75, 250, 100, 30);
+        f.add(but);
+        f.setSize(300,400);
         f.setLayout(null);
         f.setVisible(true);
         if(s[0].equals("")){
             try {
-                Thread.sleep(100);
+                for(int i=0; i<50000; i++) {
+                    Thread.sleep(100);
+                    if(!stopThread[0].equals("")){
+                        stopThread[0]="";
+                        return makeCharacterSelect(playerNames, true);
+                    }
+                }
             }
             catch(InterruptedException ie){
             }
