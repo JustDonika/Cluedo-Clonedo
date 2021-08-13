@@ -265,8 +265,6 @@ public class GameView extends JFrame implements WindowListener, ActionListener{
 
     //Finds tile at given location
     public Tile tileAt(GameModel GM, int x, int y){
-        System.out.println(x);
-        System.out.println(y);
         return GM.findTile(x/20, y/20);
     }
 
